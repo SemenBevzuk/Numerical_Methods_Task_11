@@ -26,6 +26,9 @@ namespace Numerical_Methods_Task_11
             cartesianChart_u2.LegendLocation = LegendLocation.Bottom;
             cartesianChart_u3.DefaultLegend = new DefaultLegend { Visibility = Visibility.Visible };
             cartesianChart_u3.LegendLocation = LegendLocation.Bottom;
+
+            InitDataGridMetodInfo();
+            InitDataGridTaskInfo();
         }
 
         private void button_reset_Click(object sender, EventArgs e)
@@ -33,6 +36,8 @@ namespace Numerical_Methods_Task_11
             cartesianChart_u1.Series.Clear();
             cartesianChart_u2.Series.Clear();
             cartesianChart_u3.Series.Clear();
+            InitDataGridMetodInfo();
+            InitDataGridTaskInfo();
             CounterOfTests = 0;
         }
 
@@ -78,6 +83,48 @@ namespace Numerical_Methods_Task_11
                     .Select(_ => new ObservablePoint(_.X, _.V3))),
                 PointGeometrySize = 5
             });
+        }
+
+        private void InitDataGridMetodInfo()
+        {
+            dataGridView_MetodInfo.Rows.Clear();
+            dataGridView_MetodInfo.Columns.Clear();
+            dataGridView_MetodInfo.RowCount = 1;
+            dataGridView_MetodInfo.ColumnCount = 14;
+            dataGridView_MetodInfo.Columns[0].HeaderText = "i";
+            dataGridView_MetodInfo.Columns[1].HeaderText = "h_(i-1)";
+            dataGridView_MetodInfo.Columns[2].HeaderText = "x_i";
+            dataGridView_MetodInfo.Columns[3].HeaderText = "v_i";
+            dataGridView_MetodInfo.Columns[4].HeaderText = "v_i_удв";
+            dataGridView_MetodInfo.Columns[5].HeaderText = "v_i - v_i_удв";
+            dataGridView_MetodInfo.Columns[6].HeaderText = "S";
+            dataGridView_MetodInfo.Columns[7].HeaderText = "e";
+            dataGridView_MetodInfo.Columns[8].HeaderText = "v_i_уточ";
+            dataGridView_MetodInfo.Columns[9].HeaderText = "v_i_итог";
+            dataGridView_MetodInfo.Columns[10].HeaderText = "u_i";
+            dataGridView_MetodInfo.Columns[11].HeaderText = "|u_i - v_i|";
+            dataGridView_MetodInfo.Columns[12].HeaderText = "Ум. шага";
+            dataGridView_MetodInfo.Columns[13].HeaderText = "Ув. шага";
+            dataGridView_MetodInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_MetodInfo.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+        }
+
+        private void InitDataGridTaskInfo()
+        {
+            dataGridView_TaskInfo.Rows.Clear();
+            dataGridView_TaskInfo.Columns.Clear();
+            dataGridView_TaskInfo.RowCount = 1;
+            dataGridView_TaskInfo.ColumnCount = 8;
+            dataGridView_TaskInfo.Columns[0].HeaderText = "#";
+            dataGridView_TaskInfo.Columns[1].HeaderText = "alfa";
+            dataGridView_TaskInfo.Columns[2].HeaderText = "sigma";
+            dataGridView_TaskInfo.Columns[3].HeaderText = "x0";
+            dataGridView_TaskInfo.Columns[4].HeaderText = "u0";
+            dataGridView_TaskInfo.Columns[5].HeaderText = "h0";
+            dataGridView_TaskInfo.Columns[6].HeaderText = "e";
+            dataGridView_TaskInfo.Columns[7].HeaderText = "Максимум итераций";
+            dataGridView_TaskInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_TaskInfo.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
         }
     }
 }
