@@ -19,7 +19,7 @@ namespace Numerical_Methods_Task_11
         private bool flagStepControl; // включить или отключить контроль шага
         private int maxSteps;         // ограничение по числу шагов
         private readonly List<Point> Points = new List<Point>(); // список точек для графика
-        //private readonly List<MetodInfo> listIfMetodInfo = new List<MetodInfo>(); // список для таблиц
+        private readonly List<MetodInfo> MetodInformation = new List<MetodInfo>(); // список для таблиц
         private int countPlusH = 0; // счётчик увеличения шага
         private int countMinusH = 0; // счётчик уменьшения шага
         private int steps = 0; // число шагов в данный момент
@@ -37,7 +37,7 @@ namespace Numerical_Methods_Task_11
             f2 = _u2;
             f3 = _u3;
             Points.Add(currentPoint);
-            //MetodInfos.Add(new MetodInfo(steps, _h, _x0, 0, 0, 0, 0, 0));
+            MetodInformation.Add(new MetodInfo(steps, _h, _x0, _u_0_1, _u_0_2, _u_0_3, 0, 0, 0, 0, 0, 0, 0));
         }
 
         public void Run()
@@ -54,7 +54,7 @@ namespace Numerical_Methods_Task_11
 
                 var e = Math.Abs(Math.Pow(2.0, 3.0) * s);
 
-                var uCorr = GetVCorr(newPoint, s);
+                var vCorr = GetVCorr(newPoint, s);
 
                 if (flagStepControl)
                 {
@@ -74,7 +74,9 @@ namespace Numerical_Methods_Task_11
                 currentPoint = newPoint;
                 Points.Add(newPoint);
                 steps++;
-                //MetodInfos.Add(new MetodInfo(steps, oldH, fCurrentPoint.X, s, e, fCurrentPoint.V, countMinusH, countPlusH));
+                // хлопцы, что с табличкой делать? Всю инфу выводить? Это дофига выходит... может вынести её отсюда?
+                MetodInformation.Add(new MetodInfo(steps, oldH, currentPoint.X, currentPoint.V1, currentPoint.V2, currentPoint.V3,
+                    halfPoint.V1, currentPoint.V1 - halfPoint.V1, s, e, vCorr.V1, countMinusH, countPlusH));
             }
         }
 
@@ -140,10 +142,10 @@ namespace Numerical_Methods_Task_11
             return false;
         }
 
-        //public List<MetodInfo> GetMetodInfos()
-        //{
-        //    return listIfMetodInfo;
-        //}
+        public List<MetodInfo> GetMetodInfos()
+        {
+            return MetodInformation;
+        }
         public List<Point> GetPoints()
         {
             return Points;

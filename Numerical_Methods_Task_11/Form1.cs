@@ -43,6 +43,8 @@ namespace Numerical_Methods_Task_11
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            InitDataGridTaskInfo();
+            InitDataGridMetodInfo();
             CounterOfTests++;
             SystemFunctions systemFunctions = new SystemFunctions(
                 Convert.ToDouble(textBox_alfa1.Text),Convert.ToDouble(textBox_alfa2.Text),
@@ -59,6 +61,14 @@ namespace Numerical_Methods_Task_11
                 systemFunctions.FunctionV1, systemFunctions.FunctionV2, systemFunctions.FunctionV3
                 );
             rungeKutta3System.Run();
+
+            List<MetodInfo> metodInfos = rungeKutta3System.GetMetodInfos();
+
+            metodInfos.ForEach(_ =>
+                dataGridView_MetodInfo.Rows.Add
+                (_.Iteration, _.H, _.X, _.V1, _.V2, _.V3, _.VHalf, _.DeltaV, _.S, _.e, _.VCorr, _.CountMinusH, _.CountPlusH));
+            dataGridView_MetodInfo.AutoResizeColumns();
+
             cartesianChart_u1.Series.Add(new LineSeries
             {
                 Title = "Численное решение #" + Convert.ToString(CounterOfTests) + ".1",
@@ -90,21 +100,20 @@ namespace Numerical_Methods_Task_11
             dataGridView_MetodInfo.Rows.Clear();
             dataGridView_MetodInfo.Columns.Clear();
             dataGridView_MetodInfo.RowCount = 1;
-            dataGridView_MetodInfo.ColumnCount = 14;
+            dataGridView_MetodInfo.ColumnCount = 13;
             dataGridView_MetodInfo.Columns[0].HeaderText = "i";
             dataGridView_MetodInfo.Columns[1].HeaderText = "h_(i-1)";
             dataGridView_MetodInfo.Columns[2].HeaderText = "x_i";
-            dataGridView_MetodInfo.Columns[3].HeaderText = "v_i";
-            dataGridView_MetodInfo.Columns[4].HeaderText = "v_i_удв";
-            dataGridView_MetodInfo.Columns[5].HeaderText = "v_i - v_i_удв";
-            dataGridView_MetodInfo.Columns[6].HeaderText = "S";
-            dataGridView_MetodInfo.Columns[7].HeaderText = "e";
-            dataGridView_MetodInfo.Columns[8].HeaderText = "v_i_уточ";
-            dataGridView_MetodInfo.Columns[9].HeaderText = "v_i_итог";
-            dataGridView_MetodInfo.Columns[10].HeaderText = "u_i";
-            dataGridView_MetodInfo.Columns[11].HeaderText = "|u_i - v_i|";
-            dataGridView_MetodInfo.Columns[12].HeaderText = "Ум. шага";
-            dataGridView_MetodInfo.Columns[13].HeaderText = "Ув. шага";
+            dataGridView_MetodInfo.Columns[3].HeaderText = "v_1_i";
+            dataGridView_MetodInfo.Columns[4].HeaderText = "v_2_i";
+            dataGridView_MetodInfo.Columns[5].HeaderText = "v_3_i";
+            dataGridView_MetodInfo.Columns[6].HeaderText = "v_i_удв";
+            dataGridView_MetodInfo.Columns[7].HeaderText = "v_i - v_i_удв";
+            dataGridView_MetodInfo.Columns[8].HeaderText = "S";
+            dataGridView_MetodInfo.Columns[9].HeaderText = "e";
+            dataGridView_MetodInfo.Columns[10].HeaderText = "v_i_уточ";
+            dataGridView_MetodInfo.Columns[11].HeaderText = "Ум. шага";
+            dataGridView_MetodInfo.Columns[12].HeaderText = "Ув. шага";
             dataGridView_MetodInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_MetodInfo.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
         }

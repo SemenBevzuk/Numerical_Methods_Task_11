@@ -429,7 +429,7 @@
             this.dataGridView_MetodInfo.Location = new System.Drawing.Point(12, 909);
             this.dataGridView_MetodInfo.Name = "dataGridView_MetodInfo";
             this.dataGridView_MetodInfo.RowTemplate.Height = 28;
-            this.dataGridView_MetodInfo.Size = new System.Drawing.Size(1726, 243);
+            this.dataGridView_MetodInfo.Size = new System.Drawing.Size(1726, 281);
             this.dataGridView_MetodInfo.TabIndex = 61;
             // 
             // Form1
