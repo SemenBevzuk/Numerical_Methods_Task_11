@@ -74,7 +74,6 @@ namespace Numerical_Methods_Task_11
                 currentPoint = newPoint;
                 Points.Add(newPoint);
                 steps++;
-                // хлопцы, что с табличкой делать? Всю инфу выводить? Это дофига выходит... может вынести её отсюда?
                 MetodInformation.Add(new MetodInfo(steps, oldH, currentPoint.X, currentPoint.V1, currentPoint.V2, currentPoint.V3,
                     halfPoint.V1, currentPoint.V1 - halfPoint.V1, s, e, vCorr.V1, countMinusH, countPlusH));
             }

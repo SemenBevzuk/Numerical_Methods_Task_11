@@ -40,7 +40,7 @@ namespace Numerical_Methods_Task_11
         }
         public double FunctionV3(Point point)
         {
-            double res = point.V3 * (-1 + gamma1 * point.V1 - gamma2 * point.V2);
+            double res = point.V3 * (-1 + gamma1 * point.V1 - gamma2 * point.V2); // тут был -1
             return res;
         }
     }

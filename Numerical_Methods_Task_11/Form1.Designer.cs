@@ -70,6 +70,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView_TaskInfo = new System.Windows.Forms.DataGridView();
             this.dataGridView_MetodInfo = new System.Windows.Forms.DataGridView();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBox_TaskSelector = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_TaskInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MetodInfo)).BeginInit();
@@ -420,23 +422,43 @@
             this.dataGridView_TaskInfo.Location = new System.Drawing.Point(12, 834);
             this.dataGridView_TaskInfo.Name = "dataGridView_TaskInfo";
             this.dataGridView_TaskInfo.RowTemplate.Height = 28;
-            this.dataGridView_TaskInfo.Size = new System.Drawing.Size(1726, 68);
+            this.dataGridView_TaskInfo.Size = new System.Drawing.Size(1726, 115);
             this.dataGridView_TaskInfo.TabIndex = 62;
             // 
             // dataGridView_MetodInfo
             // 
             this.dataGridView_MetodInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_MetodInfo.Location = new System.Drawing.Point(12, 909);
+            this.dataGridView_MetodInfo.Location = new System.Drawing.Point(12, 955);
             this.dataGridView_MetodInfo.Name = "dataGridView_MetodInfo";
             this.dataGridView_MetodInfo.RowTemplate.Height = 28;
-            this.dataGridView_MetodInfo.Size = new System.Drawing.Size(1726, 281);
+            this.dataGridView_MetodInfo.Size = new System.Drawing.Size(1726, 477);
             this.dataGridView_MetodInfo.TabIndex = 61;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(488, 750);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(159, 20);
+            this.label17.TabIndex = 64;
+            this.label17.Text = "История испытаний";
+            // 
+            // comboBox_TaskSelector
+            // 
+            this.comboBox_TaskSelector.FormattingEnabled = true;
+            this.comboBox_TaskSelector.Location = new System.Drawing.Point(494, 773);
+            this.comboBox_TaskSelector.Name = "comboBox_TaskSelector";
+            this.comboBox_TaskSelector.Size = new System.Drawing.Size(147, 28);
+            this.comboBox_TaskSelector.TabIndex = 63;
+            this.comboBox_TaskSelector.SelectedIndexChanged += new System.EventHandler(this.comboBox_TaskSelector_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1750, 1164);
+            this.ClientSize = new System.Drawing.Size(1750, 1444);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.comboBox_TaskSelector);
             this.Controls.Add(this.dataGridView_TaskInfo);
             this.Controls.Add(this.dataGridView_MetodInfo);
             this.Controls.Add(this.pictureBox1);
@@ -531,6 +553,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView_TaskInfo;
         private System.Windows.Forms.DataGridView dataGridView_MetodInfo;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox_TaskSelector;
     }
 }
 
